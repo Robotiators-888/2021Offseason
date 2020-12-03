@@ -32,15 +32,15 @@ public class pistonIntake extends SubsystemBase{
    }
    
    public void runForwards(){
-    motorLeft.set(1);
+    motorLeft.set(0.75);
    }
    
    public void runBackward(){
-    motorLeft.set(-1);
+    motorLeft.set(-0.75);
    }
    
    
-   
+
    @Override
     public void periodic() {
       // TODO Auto-generated method stub
