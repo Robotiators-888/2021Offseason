@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class pistonIntake extends SubsystemBase{
   private TalonSRX motorLeft;
- 
  private DoubleSolenoid ds;
 
   public void piston(){
@@ -21,9 +20,9 @@ public class pistonIntake extends SubsystemBase{
  
   }
   
-  public void flipIntake( boolean ranbool) {
-      
-      if (ranbool) {
+  public void flipIntake() {
+
+      if (ds.get().equals(DoubleSolenoid.Value.kReverse)) {
         ds.set​(DoubleSolenoid.Value.kForward);
       }
 
@@ -32,12 +31,23 @@ public class pistonIntake extends SubsystemBase{
     }
    }
    
-
-  
-    @Override
+   public void runForwards(){
+    motorLeft.set(1);
+   }
+   
+   public void runBackward(){
+    motorLeft.set(-1);
+   }
+   
+   
+   
+   @Override
     public void periodic() {
       // TODO Auto-generated method stub
       super.periodic();
-    } 
-}
+    }
+
+
+
+ }
 
