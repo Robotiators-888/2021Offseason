@@ -39,7 +39,10 @@ public class pistonIntake extends SubsystemBase{
     motorLeft.set(-0.75);
    }
    
-   
+   public void runStop(){
+     motorLeft.set(0);
+   }
+
 
    @Override
     public void periodic() {
