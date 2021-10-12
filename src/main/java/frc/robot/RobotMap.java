@@ -90,7 +90,7 @@ public class RobotMap {
 
     public static final int SHOOTER_RPM_TOLERANCE = 100;
 
-    public static final double RPM_Green = 1801;
+    public static final double RPM_Green = 2500;
     public static final double RPM_Yellow = 1802;
     public static final double RPM_Blue = 1803;
     public static final double RPM_Red = 1804;

@@ -59,10 +59,10 @@ public class Shooter {
         rpms = 0;
         targetRPM = 3700;
 
-        pid.setFF(0);
-        pid.setP(3.25e-3);
-        pid.setI(3e-6);
-        pid.setD(0);
+        pid.setFF(0.00000481);
+        pid.setP(0.000001);
+        pid.setI(0.000000000000125);
+        pid.setD(0.00000000000001);
 
         pid.setIZone(500);
 
