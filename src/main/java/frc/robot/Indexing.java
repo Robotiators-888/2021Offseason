@@ -34,6 +34,20 @@ public class Indexing {
     boolean ballInPos3;
     boolean ballInPos4;
 
+    public void indexAutoPeriodic(boolean ready){
+        if (ready){
+            runLoadBelt(0.5);
+            runUpperBelt(0.5);
+            runLowerFarSideIndex(0.5);
+            runLowerFunnelSideIndex(0.5);
+        }else{
+            runLoadBelt(0);
+            runUpperBelt(0);
+            runLowerFarSideIndex(0);
+            runLowerFunnelSideIndex(0);
+        }
+    }
+
     public Indexing(OI oi, Intake intake) {
         funnelMotor = new TalonSRX(RobotMap.FUNNEL_MOTOR_CANID);
         lowerFunnelSideIndex = new TalonSRX(

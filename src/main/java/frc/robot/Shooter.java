@@ -76,6 +76,13 @@ public class Shooter {
         selectedRPM = 0;
     }
 
+    public void shooterAutoPeriodic(){
+        rpms = encoder.getVelocity();
+        SmartDashboard.putNumber("Encoder RPMs", rpms);
+        SmartDashboard.putBoolean("Ready to fire", readyToFire());
+        setShooterOutputVelocity(RobotMap.AUTO_SHOOTER_RPM);
+    }
+
     public void shooterTeleopPeriodic() {
 
         rpms = encoder.getVelocity();
@@ -148,6 +155,8 @@ public class Shooter {
         shooterMotor.set(1.0);
     }
 
+
+
     /**
      * Runs the shooter at a certain percentage of full speed.
      *
@@ -202,7 +211,7 @@ public class Shooter {
      * @return True if system is ready to fire a ball
      */
     public boolean readyToFire() {
-        if(Math.abs(targetRPM - getRPMs()) < 500) {
+        if(Math.abs(targetRPM - getRPMs()) < 1000) {
             return true;
         }
         else {

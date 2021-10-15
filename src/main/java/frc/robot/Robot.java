@@ -60,7 +60,8 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousPeriodic() {
-        
+        shooter.shooterAutoPeriodic();
+        index.indexAutoPeriodic(shooter.readyToFire());
     }
 
     @Override
