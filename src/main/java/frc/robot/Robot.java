@@ -9,7 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.cscore.VideoSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,6 +29,9 @@ public class Robot extends TimedRobot {
     OI oi;
     Shooter shooter;
     Turret turret;
+
+    UsbCamera camera0;
+    UsbCamera camera1;
 
     // Pneumatics
     Compressor compressor;
@@ -49,7 +53,10 @@ public class Robot extends TimedRobot {
 
         compressor = new Compressor(RobotMap.PCM);
 
-        // robot kermits sause
+        camera0 = CameraServer.getInstance().startAutomaticCapture(0);
+        camera1 = CameraServer.getInstance().startAutomaticCapture(1);
+
+
 
     }
 
