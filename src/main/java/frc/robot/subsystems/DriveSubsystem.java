@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANPIDController;
+import com.revrobotics.CANSparkMaxLowLevel;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -10,10 +11,10 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
   //create motor controller objects
-  private CANSparkMax leftPrimary = new CANSparkMax(Constants.ID_LEFT_PRIMARY);
-  private CANSparkMax leftSecondary = new CANSparkMax (Constants.ID_LEFT_SECONDARY);
-  private CANSparkMax rightPrimary = new CANSparkMax(Constants.ID_RIGHT_PRIMARY);
-  private CANSparkMax rightSecondary = new CANSparkMax(Constants.ID_RIGHT_SECONDARY);
+  private CANSparkMax leftPrimary = new CANSparkMax(Constants.ID_LEFT_PRIMARY, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private CANSparkMax leftSecondary = new CANSparkMax (Constants.ID_LEFT_SECONDARY, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private CANSparkMax rightPrimary = new CANSparkMax(Constants.ID_RIGHT_PRIMARY, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private CANSparkMax rightSecondary = new CANSparkMax(Constants.ID_RIGHT_SECONDARY, CANSparkMaxLowLevel.MotorType.kBrushless);
 
   //create a speed controller group for each side
   private SpeedControllerGroup groupLeft = new SpeedControllerGroup(leftPrimary, leftSecondary);
@@ -22,17 +23,14 @@ public class DriveSubsystem extends SubsystemBase {
   //create a drive train group with the speed controller groups
   private DifferentialDrive driveTrain = new DifferentialDrive(groupLeft, groupRight);
 
-  public DriveSubsystem() {
+  public DriveSubsystem() {}
 
-  }
+  public void periodic() {}
 
-  public void periodic() {
-
-  }
 
   /**
   * Sets the drivetrain to inverted
-  * @param invert the invert state of the drivetrain. True is inverted, False is inverted.
+  * @param invert the invert state of the drivetrain. True is inverted, False is not inverted.
   */
   public void invertDrive(boolean invert){
     leftPrimary.setInverted(invert);
